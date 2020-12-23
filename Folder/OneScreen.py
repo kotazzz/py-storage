@@ -96,13 +96,20 @@ class Window(object):
         self.window_storage = self.resize(self.size_x, self.size_y, winsizeupd = False)
         self.cursor.update_storage(self.window_storage)
     redraw = lambda self: exec("self.draw()\nself.flush()")
-    def get_size_x(self): pass
-    def get_size_y(self): pass
-    def set_size_x(self): pass
-    def set_size_y(self): pass
-    def get_data(self): pass
-    def set_data(self): pass
-    def destroy(self): pass
+    def get_size_x(self): 
+        return self.size_x
+    def get_size_y(self): 
+         return self.size_y
+    def set_size_x(self, x): 
+         self.size_x = x
+    def set_size_y(self, y): 
+        self.size_y = y
+    def get_data(self): 
+        return self.window_storage
+    def set_data(self, storage): 
+        self.window_storage = storage
+    def destroy(self): 
+        pass
      
 class Display(object):
     def __init__(self, x, y):
