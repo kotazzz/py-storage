@@ -1,4 +1,5 @@
 from os import system
+from random import randrange
 system('')
 
 class BGC:
@@ -61,18 +62,18 @@ class ACC:
             mode = "Color"
         if mode == "Color":
             r, g, b = (
-                NewLifeUtils.Libs.random.randrange(0, 255),
-                NewLifeUtils.Libs.random.randrange(0, 255),
-                NewLifeUtils.Libs.random.randrange(0, 255),
+                randrange(0, 255),
+                randrange(0, 255),
+                randrange(0, 255),
             )
         else:
-            r = NewLifeUtils.Libs.random.randrange(0, 255)
+            r = randrange(0, 255)
             g = r
             b = r
         return f"\x1B[38;2;{r};{g};{b}m"
 
     def RANDOMD():
-        n = NewLifeUtils.Libs.random.randrange(0, 255)
+        n = randrange(0, 255)
         return f"\x1B[38;5;{n}m"
 
     def CUSTOMRGB(r, g, b):
