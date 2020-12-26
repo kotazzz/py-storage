@@ -49,7 +49,7 @@ class Cursor(object):
         self.y = 0
     def update_storage(self,storage):
         self.local_storage = storage
-    def out(self,text):
+    def io_out(self,text):
         for letter in text:
             if self.check_x():
                 self.right(1)
@@ -68,7 +68,15 @@ class Cursor(object):
             
     def push_data(self):
         return self.local_storage
-
+    def io_in(self):
+        recorded = keyboard.record(until='enter')
+        flag = False
+        for event in recorded:
+            if len(event.name) == 1 or event.name == 'space' :
+            
+                if flag:
+                    self.io_out(str(event.name))
+                flag = not flag
 class Window(object):
     def __init__(self, x, y):
         print(MCC.CURSOR_HIDE)
@@ -127,14 +135,15 @@ class Display(object):
             
             
 # Functions:
-# out(text) = print(text)
-# in(text) = input(text)
+# io_out(text) = print(text)
+# io_in(text) = input(text)
 # cls(sym)
 # resize(x, y)
 
 def main(win):
-    win.cursor.out('*-')
-    win.cursor.out('s')
+    win.cursor.io_out('*-')
+    win.cursor.io_out('s')
+    win.cursor.io_in()
 
 display = Display(120, 30)
 display.attach(main)
